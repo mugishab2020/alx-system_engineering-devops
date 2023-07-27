@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#This is for Best school using while
+n=1
+
+while [ $n -lt 10 ]
+
+do
+
+  echo "Best School"
+
+  ((n++))
+
+done
