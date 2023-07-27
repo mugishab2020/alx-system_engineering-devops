@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#the loop that prints the best school is here
+for ((a = 0; a < 10; a++))
+
+do
+	echo "Best School"
+done
