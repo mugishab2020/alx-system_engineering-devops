@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#including bash in pricess finding
+
+ps -aux | grep bash
