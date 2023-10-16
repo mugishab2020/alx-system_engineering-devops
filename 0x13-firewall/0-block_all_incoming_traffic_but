@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# installing the ufw and anable it
+
+# get update first
+sudo apt-get update
+
+# install ufw from super user
+sudo apt-get install ufw
+
+# enabling ufw
+sudo ufw enable
+
+# denying all incoming traffics
+sudo ufw default deny incoming
+
+# port allowing
+
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80/tcp
+
+# ufw anable again
+sudo ufw enable
+
+# checking ufw sttus
+sudo ufw  status
