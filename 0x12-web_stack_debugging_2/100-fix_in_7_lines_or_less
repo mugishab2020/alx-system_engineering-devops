@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 # Configure a broken container to work with nginx at port 8080
 pkill apache2
 chown nginx /etc/nginx/nginx.conf
