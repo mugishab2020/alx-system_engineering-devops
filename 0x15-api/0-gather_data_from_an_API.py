@@ -1,28 +1,27 @@
 #!/usr/bin/python3
-""" importing the needed modules"""
-
+""" module doc """
 import requests
 import sys
 
 
-def get_employee_todo_progress(employee_id):
-    base_url = 'https://jsonplaceholder.typicode.com/'
-    user_response = requests.get(f'{base_url}users/{employee_id}')
-    user_data = user_response.json()
-    name = user_data.get('name')
-    todo_response = requests.get(f'{base_url}todos?userId={employee_id}')
-    todo_data = todo_response.json()
-    total_tasks = len(todo_data)
-    tasks = sum(1 for task in todo_data if task['completed'])
-    print(f"Employee {name} is done with tasks({tasks}/{total_tasks}):")
-    for task in todo_data:
-        if task['completed']:
-            print(f"    {task['title']}")
+def main():
+    """ def com """
+    id = sys.argv[1]
+    url = f'https://jsonplaceholder.typicode.com/'
+    users = f'users?id={id}'
+    todos = f'todos?userId={id}'
+    done = f'{todos}&completed=true'
+    notDone = f'{todos}&completed=false'
+    userData = requests.get(f'{url}{users}').json()
+    Name = userData[0].get("name")
+    todosData = requests.get(f'{url}{todos}').json()
+    todosDone = requests.get(f'{url}{done}').json()
+    doneN = len(todosDone)
+    totalN = len(todosData)
+    print(f'Employee {Name} is done with tasks({doneN}/{totalN}):')
+    for task in todosDone:
+        print("\t "+task.get("title"))
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 script_name.py <employee_id>")
-        sys.exit(1)
-    employee_id = int(sys.argv[1])
-    get_employee_todo_progress(employee_id)
+    main()
