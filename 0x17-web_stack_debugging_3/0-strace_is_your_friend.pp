@@ -6,16 +6,8 @@ service { 'apache2':
 }
 
 # Use strace to find the issue and fix it
-exec { 'fix-apache':
-  command     => '/usr/bin/strace -o /tmp/strace_output.txt -f -p $(pidof apache2) & sleep 2; kill $!',
-  path        => ['/bin', '/usr/bin'],
-  refreshonly => true,
+#
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
-
-# Fix the identified issue
-file { '/etc/apache2/sites-available/000-default.conf':
-  ensure => file,
-  content => template('my_module/apache_config.erb'), # Use your template
-  notify  => Service['apache2'],
-}
-
