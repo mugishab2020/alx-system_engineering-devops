@@ -1,17 +1,18 @@
 #!/usr/bin/python3
-"""Query subreddit"""
-
+"""module documentatioe
+"""
 import requests
+
+headers = {"User-Agent": "edson/1.0"}
 
 
 def top_ten(subreddit):
-
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {'User-Agent': 'Edson/1.0'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    """method definition"""
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+    response = requests.get(url, allow_redirects=False, headers=headers)
     if response.status_code == 200:
-        children = response.json().get('data').get('children')
-        for i in range(10):
-            print(children[i].get('data').get('title'))
+        data = response.json()
+        for post in data["data"]["children"]:
+            print(post["data"]["title"])
     else:
         print("None")
