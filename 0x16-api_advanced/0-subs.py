@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-"""Quering Reddit"""
+#!ieddit"""
 
 import requests
 
@@ -12,10 +11,10 @@ def number_of_subscribers(subreddit):
     response = requests.get(url, allow_redirects=False, headers=headers)
     if response.status_code == 200:
         try:
-	    data = response.json()
-            return data['data']['ubscribers']
+
+            data = response.json()
+            return data['data']['subscribers']
         except (KeyError, ValueError):
             return (0)
-
     else:
         return (0)
