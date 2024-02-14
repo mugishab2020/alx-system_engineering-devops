@@ -3,7 +3,7 @@
 """
 import requests
 
-headers = {"User-Agent": "edson/1.0"}
+headers = {"User-Agent": "Edson/1.0"}
 
 
 def top_ten(subreddit):
