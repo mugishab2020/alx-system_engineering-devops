@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-this doc for module
+"""module documentatioe
 """
 import requests
 
@@ -8,7 +7,7 @@ headers = {"User-Agent": "Edson/1.0"}
 
 
 def top_ten(subreddit):
-    """method doc"""
+    """method definition"""
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     response = requests.get(url, allow_redirects=False, headers=headers)
     if response.status_code == 200:
@@ -17,4 +16,3 @@ def top_ten(subreddit):
             print(post["data"]["title"])
     else:
         print("None")
-
