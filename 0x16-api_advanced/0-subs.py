@@ -1,4 +1,7 @@
-#!ieddit"""
+#!/usr/bin/python3
+"""
+The module documentation
+"""
 
 import requests
 
