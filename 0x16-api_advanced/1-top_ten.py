@@ -4,7 +4,13 @@
 import requests
 
 headers = {"User-Agent": "Edson/1.0"}
-
+def is_valid_subreddit(subreddit):
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 200:
+        return True
+    else:
+        return False
 
 def top_ten(subreddit):
     """method definition"""
