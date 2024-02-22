@@ -1,3 +1,8 @@
+[Unit]
+Description=Gunicorn instance to serve Airbnb Clone application.
+After=network.target
+
+[Service]
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
