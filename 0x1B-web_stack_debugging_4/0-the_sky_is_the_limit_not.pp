@@ -9,5 +9,5 @@ exec { 'fix--for-nginx':
 exec { 'nginx-restart':
   command => '/etc/init.d/nginx restart',
   path    => '/etc/init.d/',
-  require => Exec['fix--for-nginx'], 
+  require => Exec['fix--for-nginx'],
 }
